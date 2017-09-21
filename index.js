@@ -25,11 +25,12 @@ module.exports = postcss.plugin('postcss-style-guide', function (opts) {
             src: params.src,
             tmplStyle: params.style,
             stylePath: require.resolve('highlight.js/styles/github.css')
-          }).then(function (styles) {
+        }).then(function (styles) {
             var html = template.rendering(maps, styles, {
                 project: params.project,
                 showCode: params.showCode,
                 tmpl: params.template,
+                path: params.templateFile,
                 colorPalette: palette
             });
             fileWriter.write(params.dest, html);
@@ -39,10 +40,10 @@ module.exports = postcss.plugin('postcss-style-guide', function (opts) {
             }
 
             return root;
-          }).catch(function (err) {
+        }).catch(function (err) {
             console.error('generate err:', err);
             return root;
-          });
+        });
         return promise;
     };
     return func;
