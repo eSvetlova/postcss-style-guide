@@ -28,6 +28,7 @@ module.exports = postcss.plugin('postcss-style-guide', function (opts) {
         }).then(function (styles) {
             var html = template.rendering(maps, styles, {
                 project: params.project,
+                styleFiles: params.styleFiles,
                 showCode: params.showCode,
                 tmpl: params.template,
                 path: params.templateFile,
